@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package domain;
+
+message Message{
+  string name = 1;
+  string msg = 2;
+}
+
+service HelloWorldService{
+  rpc hello(helloRequest) returns (helloResponse);
+  rpc helloReqStream(stream helloRequest) returns (helloResponse);
+  rpc helloResStream(helloRequest) returns (stream helloResponse);
+  rpc helloStream(stream helloRequest) returns (stream helloResponse);
+}
+
+message helloRequest {
+  string name = 1;
+}
+message helloResponse{
+  Message msg = 1;
+}
